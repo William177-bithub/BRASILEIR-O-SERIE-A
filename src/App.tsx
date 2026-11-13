@@ -5,7 +5,7 @@ import { FiltroZonas } from './components/FiltroZonas'
 import { CardClube } from './components/CardClube'
 import { CardJogo } from './components/CardJogo'
 import { Footer } from './components/Footer'
-import { clubes, zonaDoClube } from './data/clubes'
+import { clubes, zonaDoClube, buscarClubePorSigla } from './data/clubes'
 import { proximosJogos } from './data/jogos'
 import type { FiltroZona } from './types'
 
@@ -23,10 +23,6 @@ function App() {
     filtro === 'todos'
       ? clubes
       : clubes.filter((clube) => zonaDoClube(clube.posicao) === filtro)
-
-  function buscarClube(sigla: string) {
-    return clubes.find((clube) => clube.sigla === sigla)!
-  }
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -77,8 +73,8 @@ function App() {
                 <CardJogo
                   key={jogo.id}
                   jogo={jogo}
-                  mandante={buscarClube(jogo.mandante)}
-                  visitante={buscarClube(jogo.visitante)}
+                  mandante={buscarClubePorSigla(jogo.mandante)}
+                  visitante={buscarClubePorSigla(jogo.visitante)}
                 />
               ))}
             </div>
