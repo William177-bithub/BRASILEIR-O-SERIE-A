@@ -1,0 +1,726 @@
+/* ===== Variaveis (cores, espacamentos, tipografia) ===== */
+:root {
+  --verde-100: #dcfce7;
+  --verde-600: #16a34a;
+  --verde-700: #15803d;
+  --verde-800: #166534;
+  --esmeralda: #059669;
+  --azul: #2563eb;
+  --vermelho: #dc2626;
+  --amarelo-100: #fef9c3;
+  --amarelo-500: #eab308;
+  --amarelo-700: #a16207;
+  --amarelo-800: #854d0e;
+
+  --cinza-50: #f9fafb;
+  --cinza-100: #f3f4f6;
+  --cinza-200: #e5e7eb;
+  --cinza-300: #d1d5db;
+  --cinza-400: #9ca3af;
+  --cinza-500: #6b7280;
+  --cinza-600: #4b5563;
+  --cinza-700: #374151;
+  --cinza-800: #1f2937;
+  --cinza-900: #111827;
+  --branco: #ffffff;
+
+  --esp-1: 0.25rem;
+  --esp-2: 0.5rem;
+  --esp-3: 0.75rem;
+  --esp-4: 1rem;
+  --esp-6: 1.5rem;
+  --esp-8: 2rem;
+
+  --raio-md: 0.5rem;
+  --raio-lg: 0.75rem;
+  --largura-max: 80rem;
+
+  --fonte: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --sombra-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --sombra-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  background: var(--cinza-50);
+  color: var(--cinza-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ===== Layout geral ===== */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.principal {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  flex: 1;
+  padding: var(--esp-6) var(--esp-4);
+}
+
+.secao,
+.proximos {
+  scroll-margin-top: 5rem;
+  min-width: 0;
+}
+
+.titulo-secao {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.secao__cabecalho {
+  margin-top: var(--esp-4);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.secao__contagem {
+  font-size: 0.875rem;
+  color: var(--cinza-500);
+}
+
+.lista-clubes {
+  margin-top: var(--esp-3);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--esp-3);
+}
+
+.proximos {
+  margin-top: 2.5rem;
+}
+
+.lista-jogos {
+  margin-top: var(--esp-3);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--esp-3);
+}
+
+/* ===== Tablet ===== */
+@media (min-width: 768px) {
+  .principal {
+    padding: var(--esp-6);
+  }
+  .lista-clubes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .lista-jogos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== Desktop ===== */
+@media (min-width: 1024px) {
+  .principal {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--esp-8);
+    padding: var(--esp-8) var(--esp-6);
+  }
+  .proximos {
+    margin-top: 0;
+  }
+  .proximos__conteudo {
+    position: sticky;
+    top: 6rem;
+  }
+  .lista-jogos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Header ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--cinza-200);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+}
+
+.header__container {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--esp-3) var(--esp-4);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.logo__icone {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--raio-md);
+  background: var(--verde-700);
+  color: var(--branco);
+  font-size: 0.875rem;
+}
+
+.logo__texto {
+  font-size: 1.125rem;
+}
+
+.menu {
+  display: none;
+  align-items: center;
+  gap: var(--esp-8);
+}
+
+.menu__link {
+  color: var(--cinza-700);
+  transition: color 0.15s;
+}
+
+.menu__link:hover {
+  color: var(--verde-700);
+}
+
+.menu__favoritos {
+  display: none;
+  align-items: center;
+  gap: var(--esp-1);
+  border-radius: 9999px;
+  background: var(--amarelo-100);
+  padding: var(--esp-1) var(--esp-3);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--amarelo-800);
+}
+
+.hamburguer {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  border: 0;
+  border-radius: var(--raio-md);
+  background: transparent;
+}
+
+.hamburguer:hover {
+  background: var(--cinza-100);
+}
+
+.hamburguer__linha {
+  width: 1.5rem;
+  height: 2px;
+  background: var(--cinza-900);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.hamburguer__linha--topo-aberta {
+  transform: translateY(0.5rem) rotate(45deg);
+}
+
+.hamburguer__linha--meio-aberta {
+  opacity: 0;
+}
+
+.hamburguer__linha--base-aberta {
+  transform: translateY(-0.5rem) rotate(-45deg);
+}
+
+.menu-mobile {
+  border-top: 1px solid var(--cinza-200);
+  padding: 0 var(--esp-4) var(--esp-4);
+}
+
+.menu-mobile__link {
+  display: block;
+  border-bottom: 1px solid var(--cinza-100);
+  padding: var(--esp-3) 0;
+  color: var(--cinza-700);
+}
+
+.menu-mobile__favoritos {
+  padding-top: var(--esp-3);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--amarelo-700);
+}
+
+@media (min-width: 768px) {
+  .header__container {
+    padding: var(--esp-3) var(--esp-6);
+  }
+  .menu {
+    display: flex;
+  }
+  .hamburguer,
+  .menu-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu__favoritos {
+    display: inline-flex;
+  }
+}
+
+/* ===== Hero ===== */
+.hero {
+  background: linear-gradient(to bottom right, var(--verde-800), var(--verde-700), var(--esmeralda));
+  color: var(--branco);
+}
+
+.hero__container {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-6);
+  padding: 2.5rem var(--esp-4);
+  text-align: center;
+}
+
+.hero__titulo {
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.hero__subtitulo-mobile {
+  margin-top: var(--esp-2);
+  color: var(--verde-100);
+}
+
+.hero__subtitulo {
+  display: none;
+  margin-top: var(--esp-3);
+  font-size: 1.125rem;
+  color: var(--verde-100);
+}
+
+.hero__selo {
+  display: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--raio-lg);
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--esp-4) var(--esp-8);
+  text-align: center;
+}
+
+.hero__selo-titulo {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.hero__selo-texto {
+  font-size: 0.875rem;
+  color: var(--verde-100);
+}
+
+.hero__estatisticas {
+  display: none;
+  gap: var(--esp-4);
+}
+
+.hero__estatistica {
+  width: 10rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--raio-lg);
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--esp-6) 0;
+  text-align: center;
+}
+
+.hero__estatistica-valor {
+  font-size: 1.875rem;
+  font-weight: 800;
+}
+
+.hero__estatistica-rotulo {
+  margin-top: var(--esp-1);
+  font-size: 0.875rem;
+  color: var(--verde-100);
+}
+
+@media (min-width: 768px) {
+  .hero__container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3rem var(--esp-6);
+    text-align: left;
+  }
+  .hero__titulo {
+    font-size: 2.25rem;
+  }
+  .hero__subtitulo-mobile {
+    display: none;
+  }
+  .hero__subtitulo {
+    display: block;
+  }
+  .hero__selo {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__container {
+    padding: 5rem var(--esp-6);
+  }
+  .hero__titulo {
+    font-size: 3rem;
+  }
+  .hero__selo {
+    display: none;
+  }
+  .hero__estatisticas {
+    display: flex;
+  }
+}
+
+/* ===== Filtro de zonas ===== */
+.filtro {
+  display: flex;
+  gap: var(--esp-2);
+  overflow-x: auto;
+  margin: 0 calc(var(--esp-4) * -1);
+  padding: 0 var(--esp-4) var(--esp-2);
+}
+
+.filtro__botao {
+  flex-shrink: 0;
+  border: 1px solid var(--cinza-400);
+  border-radius: 9999px;
+  background: var(--branco);
+  padding: 0.375rem var(--esp-4);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cinza-800);
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.filtro__botao:hover {
+  border-color: var(--cinza-900);
+}
+
+.filtro__botao--ativo {
+  border-color: var(--cinza-900);
+  background: var(--cinza-900);
+  color: var(--branco);
+}
+
+@media (min-width: 768px) {
+  .filtro {
+    margin: 0;
+    padding: 0 0 var(--esp-2);
+  }
+}
+
+/* ===== Card de clube ===== */
+.card-clube {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  border: 1px solid var(--cinza-300);
+  border-left-width: 6px;
+  border-radius: var(--raio-md);
+  background: var(--branco);
+  padding: var(--esp-3) var(--esp-4);
+  box-shadow: var(--sombra-sm);
+  transition: box-shadow 0.15s;
+}
+
+.card-clube:hover {
+  box-shadow: var(--sombra-md);
+}
+
+.card-clube--libertadores {
+  border-left-color: var(--verde-600);
+}
+
+.card-clube--sul-americana {
+  border-left-color: var(--azul);
+}
+
+.card-clube--neutra {
+  border-left-color: var(--cinza-300);
+}
+
+.card-clube--rebaixamento {
+  border-left-color: var(--vermelho);
+}
+
+.card-clube__posicao {
+  width: 1.5rem;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.card-clube__info {
+  min-width: 0;
+  flex: 1;
+}
+
+.card-clube__nome {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.card-clube__stats {
+  font-size: 0.875rem;
+  color: var(--cinza-500);
+}
+
+.card-clube__pontos {
+  padding-right: 1.25rem;
+  text-align: center;
+}
+
+.card-clube__pontos-valor {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.card-clube__pontos-rotulo {
+  font-size: 0.75rem;
+  color: var(--cinza-500);
+}
+
+.card-clube__favorito {
+  position: absolute;
+  top: 0.375rem;
+  right: var(--esp-2);
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--cinza-400);
+  transition: transform 0.15s;
+}
+
+.card-clube__favorito:hover {
+  transform: scale(1.25);
+}
+
+.card-clube__favorito--ativo {
+  color: var(--amarelo-500);
+}
+
+/* ===== Card de jogo ===== */
+.card-jogo {
+  border: 1px solid var(--cinza-300);
+  border-radius: var(--raio-md);
+  background: var(--branco);
+  padding: var(--esp-3) var(--esp-4);
+  box-shadow: var(--sombra-sm);
+}
+
+.card-jogo__data {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--cinza-500);
+}
+
+.card-jogo__confronto {
+  margin-top: var(--esp-2);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--esp-2);
+}
+
+.card-jogo__time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-1);
+}
+
+.card-jogo__nome {
+  text-align: center;
+  font-weight: 700;
+}
+
+.card-jogo__placar {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cinza-700);
+}
+
+.card-jogo__local {
+  margin-top: var(--esp-2);
+  font-size: 0.75rem;
+  color: var(--cinza-500);
+}
+
+/* ===== Escudo ===== */
+.escudo {
+  flex-shrink: 0;
+}
+
+.escudo--sm {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.escudo--md {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+/* ===== Legenda das zonas ===== */
+.legenda {
+  margin-top: var(--esp-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-1) 1.25rem;
+  font-size: 0.75rem;
+  color: var(--cinza-600);
+}
+
+.legenda__item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.legenda__cor {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 0.125rem;
+}
+
+.legenda__cor--libertadores {
+  background: var(--verde-600);
+}
+
+.legenda__cor--sul-americana {
+  background: var(--azul);
+}
+
+.legenda__cor--rebaixamento {
+  background: var(--vermelho);
+}
+
+/* ===== Rodape ===== */
+.rodape {
+  border-top: 1px solid var(--cinza-300);
+  background: var(--cinza-200);
+}
+
+.rodape__container {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  display: grid;
+  gap: var(--esp-6);
+  padding: var(--esp-8) var(--esp-4);
+  text-align: center;
+}
+
+.rodape__titulo {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.rodape__texto {
+  margin-top: var(--esp-1);
+  font-size: 0.875rem;
+  color: var(--cinza-600);
+}
+
+.rodape__lista {
+  margin-top: var(--esp-1);
+  font-size: 0.875rem;
+  color: var(--cinza-600);
+}
+
+.rodape__lista li {
+  margin-top: var(--esp-1);
+}
+
+.rodape__link {
+  display: block;
+  margin-top: var(--esp-1);
+  font-size: 0.875rem;
+  color: var(--cinza-600);
+}
+
+.rodape__link:hover,
+.rodape__lista a:hover {
+  color: var(--verde-700);
+}
+
+@media (min-width: 768px) {
+  .rodape__container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: var(--esp-8) var(--esp-6);
+    text-align: left;
+  }
+  .rodape__contato {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rodape__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .rodape__contato {
+    grid-column: span 1;
+  }
+}
