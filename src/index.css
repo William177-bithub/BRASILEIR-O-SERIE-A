@@ -1,9 +1,1 @@
-@import "tailwindcss";
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  @apply bg-gray-50 text-gray-900 antialiased;
-}
+/* Os estilos da aplicacao ficam em src/App.css */
