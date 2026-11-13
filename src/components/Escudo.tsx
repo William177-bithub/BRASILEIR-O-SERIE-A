@@ -1,4 +1,4 @@
-interface EscudoProps {
+type EscudoProps = {
   sigla: string
   cor: string
   tamanho?: 'sm' | 'md'

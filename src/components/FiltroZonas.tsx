@@ -1,6 +1,6 @@
 import type { FiltroZona } from '../types'
 
-interface FiltroZonasProps {
+type FiltroZonasProps = {
   filtroAtivo: FiltroZona
   onMudarFiltro: (filtro: FiltroZona) => void
 }

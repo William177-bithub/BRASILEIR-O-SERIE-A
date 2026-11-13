@@ -1,7 +1,7 @@
 import type { Clube, Jogo } from '../types'
 import { Escudo } from './Escudo'
 
-interface CardJogoProps {
+type CardJogoProps = {
   jogo: Jogo
   mandante: Clube
   visitante: Clube

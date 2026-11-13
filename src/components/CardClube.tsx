@@ -2,7 +2,7 @@ import type { Clube, Zona } from '../types'
 import { calcularPontos, zonaDoClube } from '../data/clubes'
 import { Escudo } from './Escudo'
 
-interface CardClubeProps {
+type CardClubeProps = {
   clube: Clube
   favorito: boolean
   onFavoritar: (id: number) => void

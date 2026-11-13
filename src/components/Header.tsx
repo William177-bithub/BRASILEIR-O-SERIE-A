@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-interface HeaderProps {
+type HeaderProps = {
   totalFavoritos: number
 }
 
