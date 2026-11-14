@@ -34,3 +34,9 @@ export function zonaDoClube(posicao: number): Zona {
   if (posicao >= 17) return 'rebaixamento'
   return 'neutra'
 }
+
+export function buscarClubePorSigla(sigla: string): Clube {
+  const clube = clubes.find((c) => c.sigla === sigla)
+  if (!clube) throw new Error(`Clube nao encontrado: ${sigla}`)
+  return clube
+}

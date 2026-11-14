@@ -2,7 +2,7 @@ export type Zona = 'libertadores' | 'sul-americana' | 'neutra' | 'rebaixamento'
 
 export type FiltroZona = 'todos' | 'libertadores' | 'sul-americana' | 'rebaixamento'
 
-export interface Clube {
+export type Clube = {
   id: number
   posicao: number
   nome: string
@@ -15,7 +15,7 @@ export interface Clube {
   saldoGols: number
 }
 
-export interface Jogo {
+export type Jogo = {
   id: number
   data: string
   horario: string

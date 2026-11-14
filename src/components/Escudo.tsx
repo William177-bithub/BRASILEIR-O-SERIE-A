@@ -1,4 +1,4 @@
-interface EscudoProps {
+type EscudoProps = {
   sigla: string
   cor: string
   tamanho?: 'sm' | 'md'
@@ -6,12 +6,10 @@ interface EscudoProps {
 
 // Escudo genérico em SVG (formato de brasão + sigla do clube).
 export function Escudo({ sigla, cor, tamanho = 'md' }: EscudoProps) {
-  const classeTamanho = tamanho === 'sm' ? 'h-9 w-9' : 'h-11 w-11'
-
   return (
     <svg
       viewBox="0 0 40 44"
-      className={`${classeTamanho} shrink-0`}
+      className={`escudo escudo--${tamanho}`}
       role="img"
       aria-label={`Escudo ${sigla}`}
     >
